@@ -186,7 +186,7 @@ def main() -> None:
     t0 = time.time()
 
     # Resolve weights
-    resolved = resolve_reid_weights(args.weights, models_dir="models", fatal=True)
+    resolved = resolve_reid_weights(args.weights, models_dir="models")
     if resolved is None or not Path(resolved).exists():
         print(f"reid_export.py: error: Weights not found or unresolved: {args.weights}")
         raise SystemExit(2)
