@@ -422,7 +422,7 @@ uv --version
 ### Install dependencies
 
 ```bash
-git clone https://github.com/Surya-Rayala/VideoPipeline-gallery-track.git
+git clone https://github.com/Surya-Rayala/VisionPipeline-gallery-track.git
 cd VideoPipeline-gallery-track
 uv sync
 ```
