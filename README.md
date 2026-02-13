@@ -1,6 +1,6 @@
-# track-lib
+# gallery-track-lib
 
-A modular **video object tracking + gallery ReID** toolkit with a clean **track-v1** JSON schema, pluggable trackers, and optional tooling.
+**gallery-track-lib** is a modular **video object tracking + gallery ReID** toolkit with a clean **track-v1** JSON schema, pluggable trackers, and optional tooling.
 
 This is the **second stage** of the Vision Pipeline.
 
@@ -8,7 +8,7 @@ Trackers included:
 - **gallery_hybrid**: temporal tracking (ByteTrack-style) + optional periodic gallery ReID
 - **gallery_only**: gallery assignment only (no temporal association)
 
-> By default, `track-lib` **does not write any files**. You opt-in to saving JSON, frames, or annotated video via flags.
+> By default, `gallery-track-lib` **does not write any files**. You opt-in to saving JSON, frames, or annotated video via flags.
 
 ---
 
@@ -129,7 +129,7 @@ When no artifacts are enabled, no output directory/run folder is created.
 ### Install
 
 ```bash
-pip install track-lib
+pip install gallery-track-lib
 ```
 
 ---
@@ -143,6 +143,8 @@ python -m gallery_track.cli.track_video -h
 python -m gallery_track.tools.reid_export -h
 python -m gallery_track.tools.build_gallery -h
 ```
+
+> Note: the PyPI package name is `gallery-track-lib`, but the Python module/import name remains `gallery_track`.
 
 Package version:
 
@@ -467,7 +469,7 @@ uv run python -m gallery_track.cli.track_video \
 
 # ReID export tool
 
-`track-lib` includes a thin wrapper around BoxMOT’s ReID export pipeline.
+`gallery-track-lib` includes a thin wrapper around BoxMOT’s ReID export pipeline.
 
 This tool:
 - exports your ReID weights into one or more formats
@@ -566,7 +568,7 @@ uv run python -m gallery_track.tools.reid_export \
 
 # Gallery builder tool
 
-`track-lib` includes an optional GUI tool to build a gallery directory by drawing crops on a video.
+`gallery-track-lib` includes an optional GUI tool to build a gallery directory by drawing crops on a video.
 
 It creates a directory structure compatible with both trackers:
 
