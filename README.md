@@ -581,6 +581,52 @@ galleries/
     identity_B_00000.jpg
 ```
 
+## What the UI does (in plain English)
+
+The gallery builder is a small desktop window that lets you:
+- open a video
+- pause on frames where your target identity is visible
+- draw a bounding box around the person/object you want to add to the gallery
+- save that crop into a folder named after the identity
+
+Over time you build a small set of example images per identity (a “gallery”). The trackers then match detections against this gallery to produce `gallery_id`.
+
+### What you’ll see
+
+- A video preview panel (current frame)
+- A simple toolbar / buttons for selecting:
+  - the input **video**
+  - the output **gallery root folder**
+  - the current **identity name** (folder to save into)
+- A list/indicator of how many crops you’ve saved for the current identity
+
+(Exact layout may vary slightly by OS.)
+
+### Typical workflow
+
+1) Launch the tool.
+2) Select the **gallery root** folder (where galleries will be written).
+3) Select the **video** file.
+4) Type an **identity name** (e.g., `person_A`).
+5) Scrub / step through the video to find good frames.
+6) Draw a box around the identity and save the crop.
+7) Repeat for multiple frames and multiple identities.
+
+Tips:
+- Use a variety of views (front/side), lighting, and distances.
+- Avoid heavy blur/occlusion; clean crops work best.
+
+The tool will create the identity subfolders if they don’t exist. Each saved crop is written as a JPEG into the selected identity folder under the gallery root.
+
+## Paths and defaults
+
+You can start the UI in two ways:
+
+- **Without arguments**: the UI will prompt you to pick the **video** and **gallery root** inside the window.
+- **With arguments**: you can pre-fill the paths from the command line.
+
+If you launch without `--gallery-root` and/or `--video`, you must choose them in the UI before you can save crops.
+
 ## CLI usage (pip)
 
 Help:
@@ -589,8 +635,7 @@ Help:
 python -m gallery_track.tools.build_gallery -h
 ```
 
-Launch:
-
+Launch with no pre-selected paths (you will choose video + gallery root in the UI):
 ```bash
 python -m gallery_track.tools.build_gallery
 ```
@@ -602,6 +647,7 @@ python -m gallery_track.tools.build_gallery \
   --gallery-root galleries \
   --video in.mp4
 ```
+When you pass these flags, the UI starts with the fields pre-filled, but you can still change them inside the app.
 
 ## CLI usage (uv)
 
