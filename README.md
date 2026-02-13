@@ -423,7 +423,7 @@ uv --version
 
 ```bash
 git clone https://github.com/Surya-Rayala/VisionPipeline-gallery-track.git
-cd VideoPipeline-gallery-track
+cd VisionPipeline-gallery-track
 uv sync
 ```
 
