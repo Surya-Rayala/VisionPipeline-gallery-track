@@ -1,5 +1,7 @@
 # gallery-track-lib
 
+**Minimum Python:** `>=3.10`
+
 **gallery-track-lib** is a modular **video object tracking + gallery ReID** toolkit with a clean **track-v1** JSON schema, pluggable trackers, and optional tooling.
 
 This is the **second stage** of the Vision Pipeline.
@@ -125,6 +127,7 @@ When no artifacts are enabled, no output directory/run folder is created.
 ## Install with `pip` (PyPI)
 
 > Use this if you want to install and use the tool without cloning the repo.
+> Requires **Python >= 3.10**.
 
 ### Install
 
@@ -280,7 +283,9 @@ No temporal association.
 
 ### ReID / gallery knobs
 
-- `--reid-weights <path|name>`: ReID weights to use for embedding extraction. Provide either an explicit file path or a filename that exists under `--models-dir`.
+- `--reid-weights <path|name>`: ReID weights to use for embedding extraction.
+  - Provide either an explicit file path **or** a filename that exists under `--models-dir`.
+  - **Custom weights naming note:** If you pass a *name* (not a full path), make sure the weight filename starts with one of the **model names** printed by `--list-reid-models` (this improves architecture auto-detection / compatibility). Example: `osnet_*`, `lmbn_*`, etc.
   - Required for `gallery_only`.
   - Optional for `gallery_hybrid` (if omitted, hybrid runs temporal tracking with no gallery assignment).
 
@@ -490,6 +495,7 @@ All exports are collected under a run folder:
 ### Core export arguments
 
 - `--weights <path>`: Path to the source ReID `.pt` weights to export. Required unless using a `--list-*` option.
+  - **Custom weights naming note:** If your `weighta` file is a custom weight, prefer naming it so the filename starts with a model name from `--list-reid-models` (e.g., `osnet_custom.pt`).
 -- `--include <formats...>`: One or more export formats to generate (default: `torchscript`). Supported: `torchscript`, `onnx`, `openvino`, `engine`, `tflite`.
 
 ```md
