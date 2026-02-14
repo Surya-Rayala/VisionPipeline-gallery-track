@@ -652,6 +652,27 @@ Tips:
 
 The tool will create the identity subfolders if they don’t exist. Each saved crop is written as a JPEG into the selected identity folder under the gallery root. If you reopen the tool later and select the same gallery root, it will automatically pick up the existing identity folders and let you continue adding more crops to them.
 
+## Troubleshooting: OpenCV crash (common on some macOS/Linux setups)
+
+If the **gallery builder UI** crashes on launch (often due to an OpenCV / Qt / GUI backend conflict), try removing any existing OpenCV wheels and reinstalling the **headless** build.
+
+### pip
+
+```bash
+pip uninstall -y opencv-python opencv-contrib-python
+pip install opencv-python-headless
+```
+
+### uv
+
+```bash
+uv remove opencv-python opencv-contrib-python
+uv add opencv-python-headless
+```
+
+> Note: The headless build disables OpenCV GUI backends. If you need native OpenCV windows elsewhere, reinstall `opencv-python` instead.
+
+
 ## Paths and defaults
 
 You can start the UI in two ways:
