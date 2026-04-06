@@ -36,7 +36,7 @@ def _get_reid_auto_backend_cls():
 try:
     from boxmot.motion.kalman_filters.aabb.xyah_kf import KalmanFilterXYAH
 except Exception:
-    from boxmot.motion.kalman_filters.xyah_kf import KalmanFilterXYAH
+    from boxmot.motion.kalman_filters import KalmanFilterXYAH
     
 from boxmot.utils.matching import fuse_score, iou_distance, linear_assignment
 from boxmot.utils.ops import xywh2xyxy, xyxy2xywh, xywh2tlwh, tlwh2xyah
